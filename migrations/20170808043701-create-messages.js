@@ -9,6 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       body: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       createdAt: {
@@ -18,6 +19,22 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      author_id : {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id',
+        }
+      },
+      topic_id:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        reference: {
+          model: 'Topics',
+          key: 'id'
+        }
       }
     });
   },

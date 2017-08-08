@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING, unique: true}
   });
       Topics.associate = function(models) {
-        Topics.hasMany(models.Messages);
+        Topics.belongsTo(models.Users);
   };
   return Topics;
 };

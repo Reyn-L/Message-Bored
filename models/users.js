@@ -4,9 +4,10 @@ module.exports = function(sequelize, DataTypes) {
     name: {
       type:DataTypes.STRING,
       unique: true}
-  });
+    });
   Users.associate = function(models) {
-        Users.hasMany(models.Messages);
+    Users.hasMany(models.Topics);
+    Users.hasMany(models.Messages);
   };
   return Users;
 };
