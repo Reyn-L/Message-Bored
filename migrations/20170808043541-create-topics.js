@@ -21,7 +21,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      author_id: {
+      created_by: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {

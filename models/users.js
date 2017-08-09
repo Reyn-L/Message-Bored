@@ -5,8 +5,12 @@ module.exports = function(sequelize, DataTypes) {
       type:DataTypes.STRING, unique: true}
     });
   Users.associate = function(models) {
-    Users.hasMany(models.Topics);
-    Users.hasMany(models.Messages);
+    Users.hasMany(models.Topics, {
+      foreignKey:'created_by'
+    });
+    Users.hasMany(models.Messages, {
+      foreignKey:'author_id'
+    });
   };
   return Users;
 };
