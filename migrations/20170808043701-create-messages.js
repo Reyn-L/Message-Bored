@@ -31,7 +31,7 @@ module.exports = {
       topic_id:{
         type: Sequelize.INTEGER,
         allowNull: false,
-        reference: {
+        references: {
           model: 'Topics',
           key: 'id'
         }

@@ -4,7 +4,8 @@ module.exports = function(sequelize, DataTypes) {
     body: DataTypes.TEXT
   });
   Messages.associate = function(models) {
-        Messages.belongsTo(models.Users);
+    Messages.belongsTo(models.Users);
+    Messages.belongsTo(models.Topics);
   };
   return Messages;
 };
