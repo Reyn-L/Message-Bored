@@ -4,20 +4,18 @@ const router = express.Router();
 const db = require('../../../models');
 const Users = db.Users;
 const Topics = db.Topics;
-const Messages  = db.Messages;
+const Messages = db.Messages;
 
 router.get('/', (req, res) => {
-  Users.findAll()
-  .then((users) => {
+  Users.findAll().then(users => {
     res.json(users);
   });
 });
 
 router.get('/:id', (req, res) => {
-  Users.findById(req.params.id, {include: {model: Messages, include: {model: Topics}} })
-  .then(userById => {
-      console.log(userById);
-      console.log(userById.Topics);
+  Users.findById(req.params.id, {
+    include: { model: Messages, include: { model: Topics } }
+  }).then(userById => {
     let userObjs = {
       userId: userById.id,
       username: userById.name,
@@ -29,8 +27,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  Users.create({name: req.body.name})
-  .then(user => {
+  Users.create({ name: req.body.name }).then(user => {
     res.json(user);
   });
 });

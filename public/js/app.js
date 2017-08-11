@@ -14,7 +14,7 @@ angular.module('app', ['ngRoute'])
     templateUrl: 'register.html',
     controller: 'UserPostController'
   })
-  .when('/user', {
+  .when('/users/:id', {
     templateUrl: 'user.html',
     controller: 'UserIdController'
   })

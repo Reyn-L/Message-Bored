@@ -12,8 +12,8 @@ angular.module('app')
     });
   }
 
-  function getUsersById() {
-    return $http.get('/api/users' + id)
+  function getUsersById(id) {
+    return $http.get('/api/users/' + id)
     .then((users) => {
       return users.data;
     })
