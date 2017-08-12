@@ -10,12 +10,18 @@ router.get('/latest', (req, res) => {
   res.send('GET all messages');
 });
 
-router.get('/bytopic/:topic_id', (req, res) => {
+router.get('/by-topic/:topic_id', (req, res) => {
   res.send('GET messages with id:' + req.params.id);
 });
 
 router.post('/', (req, res) => {
-  res.send(200);
+  Messages.create({
+    body: req.body.body,
+    author_id: req.body.author_id,
+    topic_id: req.body.topic_id
+  }).then(message => {
+    res.json(message);
+  });
 });
 
 module.exports = router;

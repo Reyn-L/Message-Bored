@@ -28,12 +28,10 @@ router.put('/:name', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log('req.body.name', req.body.name);
   Topics.create({
     name: req.body.name,
     created_by: req.body.created_by
   }).then(topic => {
-    console.log('topic', topic);
     res.json(topic);
   });
 });
