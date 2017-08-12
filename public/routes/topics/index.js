@@ -14,13 +14,25 @@ router.get('/', (req, res) => {
     .catch(err => {});
 });
 
-router.get('/:id', (req, res) => {
-  res.send('GET topics with id:' + req.params.id);
+router.put('/:name', (req, res) => {
+  Topics.findOne({ where: { name: req.params.name } }).then(topicName => {
+    console.log(req.body);
+    Topics.update({ name: req.body.name }, { where: { id: topicName.id } })
+      .then(topicName => {
+        res.json(topicName);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
 });
 
 router.post('/', (req, res) => {
   console.log('req.body.name', req.body.name);
-  Topics.create({ name: req.body.name, created_by: req.body.created_by }).then(topic => {
+  Topics.create({
+    name: req.body.name,
+    created_by: req.body.created_by
+  }).then(topic => {
     console.log('topic', topic);
     res.json(topic);
   });
